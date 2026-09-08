@@ -1,156 +1,322 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-
-	<title>Anupam Tamrakar | Senior Application Application | Deep learning Enthusiast | anupam.tamrakar@oracle.com</title>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-
-	<meta name="keywords" content="" />
-	<meta name="description" content="" />
-
-	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css" media="all" /> 
-	<link rel="stylesheet" type="text/css" href="resume.css" media="all" />
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anupam Tamrakar | Portfolio</title>
+<meta name="description" content="Anupam Tamrakar — Technical Lead, AWS Certified, Cloud-Native Security">
+<style>
+  :root{
+    --bg:#ffffff; --bg-soft:#f6f7f9; --text:#14161a; --text-soft:#565c66;
+    --border:#e6e8eb; --accent:#3457d5; --accent-soft:#eef1fd; --pill-bg:#f1f2f5;
+    --card-bg:#ffffff; --shadow:0 1px 3px rgba(20,22,26,0.06);
+  }
+  [data-theme="dark"]{
+    --bg:#0f1115; --bg-soft:#15181e; --text:#eef0f3; --text-soft:#9aa1ac;
+    --border:#252a33; --accent:#7f9bff; --accent-soft:#1b2340; --pill-bg:#1c2029;
+    --card-bg:#15181e; --shadow:0 1px 3px rgba(0,0,0,0.4);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg); color:var(--text); line-height:1.6;
+    transition:background .2s,color .2s;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
+  header{
+    position:sticky; top:0; z-index:10; background:var(--bg);
+    border-bottom:1px solid var(--border);
+  }
+  nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:920px;margin:0 auto;}
+  .brand{font-weight:700;font-size:1.05rem;}
+  .nav-links{display:flex;gap:24px;align-items:center;}
+  .nav-links a{font-size:.92rem;color:var(--text-soft);}
+  .nav-links a:hover{color:var(--text);}
+  #themeToggle{
+    border:1px solid var(--border);background:var(--bg-soft);color:var(--text);
+    border-radius:999px;width:34px;height:34px;cursor:pointer;font-size:1rem;
+  }
+  section{padding:72px 0;border-bottom:1px solid var(--border);}
+  section:last-of-type{border-bottom:none;}
+  .eyebrow{color:var(--accent);font-size:.85rem;font-weight:600;text-align:center;margin-bottom:12px;letter-spacing:.02em;}
+  .hero{text-align:center;padding-top:96px;}
+  .hero h1{font-size:3.4rem;font-weight:800;letter-spacing:-.02em;margin-bottom:16px;}
+  .hero .tagline{font-size:1.15rem;color:var(--text);margin-bottom:8px;}
+  .hero .subline{color:var(--text-soft);margin-bottom:32px;}
+  .cta-row{display:flex;gap:14px;justify-content:center;margin-bottom:36px;flex-wrap:wrap;}
+  .btn{padding:12px 22px;border-radius:10px;font-weight:600;font-size:.95rem;display:inline-flex;align-items:center;gap:8px;}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-secondary{background:var(--bg-soft);color:var(--text);border:1px solid var(--border);}
+  .social-row{display:flex;gap:14px;justify-content:center;}
+  .social-row a{
+    width:40px;height:40px;border-radius:999px;background:var(--bg-soft);border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+  }
+  h2.section-title{font-size:1.9rem;font-weight:800;text-align:center;margin-bottom:36px;letter-spacing:-.01em;}
+  .about-text p{color:var(--text-soft);margin-bottom:16px;max-width:760px;margin-left:auto;margin-right:auto;}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:40px;}
+  .stat-card{background:var(--bg-soft);border:1px solid var(--border);border-radius:14px;padding:20px;font-size:.95rem;}
+  .exp-item{position:relative;padding:0 0 40px 28px;border-left:2px solid var(--border);}
+  .exp-item:last-child{padding-bottom:0;}
+  .exp-item::before{content:"";position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--accent);}
+  .exp-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:4px;}
+  .exp-role{font-weight:700;font-size:1.08rem;}
+  .exp-meta{color:var(--text-soft);font-size:.88rem;}
+  .exp-company{color:var(--accent);font-weight:600;margin-bottom:10px;font-size:.95rem;}
+  .exp-item ul{padding-left:20px;color:var(--text-soft);font-size:.94rem;}
+  .exp-item li{margin-bottom:6px;}
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+  .skill-group{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:20px;box-shadow:var(--shadow);}
+  .skill-group h3{font-size:.95rem;margin-bottom:12px;color:var(--text-soft);text-transform:uppercase;letter-spacing:.04em;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{background:var(--pill-bg);border-radius:999px;padding:6px 12px;font-size:.82rem;}
+  .cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+  .card{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:22px;box-shadow:var(--shadow);}
+  .card h3{margin-bottom:8px;font-size:1.05rem;}
+  .card .badge{display:inline-block;font-size:.78rem;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:3px 10px;border-radius:999px;margin-bottom:10px;}
+  .card p{color:var(--text-soft);font-size:.92rem;margin-bottom:10px;}
+  footer{text-align:center;padding:48px 0;color:var(--text-soft);font-size:.9rem;}
+  footer .foot-name{font-weight:700;color:var(--text);margin-bottom:6px;}
+  @media (max-width:640px){
+    .hero h1{font-size:2.3rem;}
+    .nav-links{gap:14px;}
+    .nav-links a{display:none;}
+  }
+</style>
 </head>
 <body>
 
-<div id="doc2" class="yui-t7">
-	<div id="inner">
-	
-		<div id="hd">
-			<div class="yui-gc">
-				<div class="yui-u first">
-					<h1>Anupam Tamrakar</h1>
-					<h2>Senior Application Application</h2>
-				</div>
+<header>
+  <nav>
+    <div class="brand">Anupam Tamrakar</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#contact">Contact</a>
+      <button id="themeToggle" aria-label="Toggle theme">🌙</button>
+    </div>
+  </nav>
+</header>
 
-				<div class="yui-u">
-					<div class="contact-info">
-						<h3><a id="pdf" href="#">Download PDF</a></h3>
-						<h3><a href="mailto:name@yourdomain.com">anupam.tamrakar@oracle.com</a></h3>
-						<h3>+91-7032857214</h3>
-					</div><!--// .contact-info -->
-				</div>
-			</div><!--// .yui-gc -->
-		</div><!--// hd -->
+<main class="wrap">
 
-		<div id="bd">
-			<div id="yui-main">
-				<div class="yui-b">
+  <section class="hero" id="home">
+    <div class="eyebrow">Hi, all</div>
+    <h1>Anupam Tamrakar</h1>
+    <div class="tagline">Technical Lead | AWS Certified | Cloud-Native Security</div>
+    <div class="subline">Leading engineering teams building cloud-native vulnerability &amp; supply-chain security at scale</div>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#contact">Get in Touch →</a>
+      <a class="btn btn-secondary" href="#experience">View Experience</a>
+    </div>
+    <div class="social-row">
+      <a href="https://github.com/anupamtamrakar" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
+      <a href="https://linkedin.com/in/anupamtamrakar" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+    </div>
+  </section>
 
-					<div class="yui-gf">
-						<div class="yui-u first">
-							<h2>Profile</h2>
-						</div>
-						<div class="yui-u">
-							<p class="enlarge">
-								Progressively evolve cross-platform ideas before impactful infomediaries. Energistically visualize tactical initiatives before cross-media catalysts for change. 
-							</p>
-						</div>
-					</div><!--// .yui-gf -->
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-text">
+      <p>I'm a Technical Lead at Aqua Security, setting technical direction for an engineering group of 10+ and owning critical paths of a cloud-native vulnerability and supply-chain security platform used by enterprise customers across AWS, Azure, and GCP.</p>
+      <p>My focus is on turning ambiguous production and customer problems into concrete designs and code — driving high-throughput scan workflows, service boundaries between scanners and the control plane, and platform scaling that took daily scan operations from roughly 10K to 10M.</p>
+      <p>Before Aqua, I worked across identity governance, enterprise HR systems, and access management at CA Technologies (Broadcom) and Oracle — giving me a grounding in security, distributed systems, and enterprise-scale software that carries through everything I build today.</p>
+    </div>
+    <div class="stats">
+      <div class="stat-card">Set technical direction for an engineering group of 10+ at Aqua Security</div>
+      <div class="stat-card">Scaled platform scan operations from ~10K to ~10M daily</div>
+      <div class="stat-card">Designed Kubernetes Security Posture Management (KSPM) from scratch</div>
+      <div class="stat-card">M.Tech in Information Security, NIT Allahabad — GPA 9.1</div>
+    </div>
+  </section>
 
-					<div class="yui-gf">
-						<div class="yui-u first">
-							<h2>Skills</h2>
-						</div>
-						<div class="yui-u">
+  <section id="experience">
+    <h2 class="section-title">Work Experience</h2>
 
-								<div class="talent">
-									<h2>Web Design</h2>
-									<p>Assertively exploit wireless initiatives rather than synergistic core competencies.	</p>
-								</div>
+    <div class="exp-item">
+      <div class="exp-head">
+        <div class="exp-role">Technical Lead</div>
+        <div class="exp-meta">Jan 2024 – Present</div>
+      </div>
+      <div class="exp-company">Aqua Security · Hyderabad, India</div>
+      <ul>
+        <li>Set technical direction and delivery priorities for an engineering group of 10+; own major architecture choices and grow engineers through mentoring and design review</li>
+        <li>Own critical paths of a cloud-native vulnerability and supply-chain security platform (registry/CI scanning, scanner orchestration, result pipelines) powering DevSecOps across AWS, Azure, and GCP</li>
+        <li>Drive high-throughput scan workflows using Twirp/Protobuf and gRPC service boundaries, REST APIs, and durable ingestion of vulnerabilities, SBOM, and resource metadata</li>
+        <li>Steered platform scaling on AWS, contributing to growth from ~10K to ~10M class daily scan operations</li>
+        <li>Lead policy-as-code initiatives using OPA/Rego and own upstream alignment for open-source dependencies (Trivy, kube-bench, kube-hunter, defsec, trivy-operator)</li>
+      </ul>
+    </div>
 
-								<div class="talent">
-									<h2>Interface Design</h2>
-									<p>Credibly streamline mission-critical value with multifunctional functionalities.	 </p>
-								</div>
+    <div class="exp-item">
+      <div class="exp-head">
+        <div class="exp-role">Expert Engineer</div>
+        <div class="exp-meta">Dec 2020 – Jan 2024</div>
+      </div>
+      <div class="exp-company">Aqua Security · Hyderabad, India</div>
+      <ul>
+        <li>Designed and implemented Kubernetes Security Posture Management (KSPM) to identify misconfigurations and enforce cluster security best practices</li>
+        <li>Core contributor to the workload scanning module, enabling scalable, non-intrusive vulnerability detection across cloud workloads</li>
+      </ul>
+    </div>
 
-								<div class="talent">
-									<h2>Project Direction</h2>
-									<p>Proven ability to lead and manage a wide variety of design and development projects in team and independent situations.</p>
-								</div>
-						</div>
-					</div><!--// .yui-gf -->
+    <div class="exp-item">
+      <div class="exp-head">
+        <div class="exp-role">Senior Application Engineer</div>
+        <div class="exp-meta">Dec 2018 – Dec 2020</div>
+      </div>
+      <div class="exp-company">Oracle · India</div>
+      <ul>
+        <li>Delivered Oracle HCM Benefits features end-to-end using Oracle ADF and Java, improving self-service flows and enterprise HR policy alignment</li>
+        <li>Built and maintained responsive UI modules with Backbone.js, integrating with ADF-backed services and REST endpoints</li>
+      </ul>
+    </div>
 
-					<div class="yui-gf">
-						<div class="yui-u first">
-							<h2>Technical</h2>
-						</div>
-						<div class="yui-u">
-							<ul class="talent">
-								<li>XHTML</li>
-								<li>CSS</li>
-								<li class="last">Javascript</li>
-							</ul>
+    <div class="exp-item">
+      <div class="exp-head">
+        <div class="exp-role">Senior Software Engineer</div>
+        <div class="exp-meta">Jul 2016 – Dec 2018</div>
+      </div>
+      <div class="exp-company">CA Technologies (Broadcom Inc.) · India</div>
+      <ul>
+        <li>Implemented CA Identity Manager &amp; Governance (IMAG) capabilities in Core Java: user lifecycle, role definitions, access requests, and policy-driven provisioning</li>
+        <li>Extended product integrations across directories, target applications, and connectors for identity administration at scale</li>
+      </ul>
+    </div>
 
-							<ul class="talent">
-								<li>Jquery</li>
-								<li>PHP</li>
-								<li class="last">CVS / Subversion</li>
-							</ul>
+    <div class="exp-item">
+      <div class="exp-head">
+        <div class="exp-role">Software Engineer</div>
+        <div class="exp-meta">Jul 2014 – Jul 2016</div>
+      </div>
+      <div class="exp-company">CA Technologies (Broadcom Inc.) · India</div>
+      <ul>
+        <li>Owned customer-facing integrations and production defect resolution for CA Identity Manager and CA Single Sign-On (SSO)</li>
+        <li>Improved reliability of sign-on and session behavior through structured troubleshooting and fixes delivered under customer SLAs</li>
+      </ul>
+    </div>
+  </section>
 
-							<ul class="talent">
-								<li>OS X</li>
-								<li>Windows XP/Vista</li>
-								<li class="last">Linux</li>
-							</ul>
-						</div>
-					</div><!--// .yui-gf-->
-					<div class="yui-gf">
-	
-						<div class="yui-u first">
-							<h2>Experience</h2>
-						</div><!--// .yui-u -->
+  <section id="skills">
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h3>Languages &amp; Stacks</h3>
+        <div class="pill-row">
+          <span class="pill">Golang</span><span class="pill">Core Java</span><span class="pill">JavaScript</span>
+          <span class="pill">Oracle ADF (JSF)</span><span class="pill">Vue.js</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>APIs &amp; Distributed Systems</h3>
+        <div class="pill-row">
+          <span class="pill">REST</span><span class="pill">Protobuf</span><span class="pill">Twirp</span>
+          <span class="pill">gRPC</span><span class="pill">Echo</span><span class="pill">Event-driven / Async</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Cloud &amp; Orchestration</h3>
+        <div class="pill-row">
+          <span class="pill">AWS</span><span class="pill">Azure</span><span class="pill">GCP</span>
+          <span class="pill">Docker/OCI</span><span class="pill">Kubernetes</span><span class="pill">EKS/AKS/GKE</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Data, Search &amp; Messaging</h3>
+        <div class="pill-row">
+          <span class="pill">PostgreSQL</span><span class="pill">Oracle DB &amp; SQL</span><span class="pill">MongoDB</span>
+          <span class="pill">Kafka</span><span class="pill">OpenSearch/Elasticsearch</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Security &amp; Identity</h3>
+        <div class="pill-row">
+          <span class="pill">OPA/Rego</span><span class="pill">SBOM &amp; Vuln Scanning</span><span class="pill">IAM / SSO</span>
+          <span class="pill">RBAC</span><span class="pill">CSPM / KSPM</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Observability &amp; Operations</h3>
+        <div class="pill-row">
+          <span class="pill">Datadog</span><span class="pill">Incident Triage</span><span class="pill">Distributed Traces</span>
+          <span class="pill">Performance Profiling</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-						<div class="yui-u">
+  <section id="achievements">
+    <h2 class="section-title">Achievements</h2>
+    <div class="cards-grid">
+      <div class="card">
+        <span class="badge">Certification</span>
+        <h3>AWS Certified Developer – Associate</h3>
+        <p>AWS</p>
+      </div>
+      <div class="card">
+        <span class="badge">Training</span>
+        <h3>Architecting on AWS</h3>
+        <p>AWS Training</p>
+      </div>
+      <div class="card">
+        <span class="badge">Publication</span>
+        <h3>Security in Live Migration of Virtual Machine with Automated Load Balancing</h3>
+        <p>IJERT Journal</p>
+      </div>
+      <div class="card">
+        <span class="badge">Education</span>
+        <h3>M.Tech, Information Security — NIT Allahabad</h3>
+        <p>GPA 9.1 · 2012–2014 · GATE 2012, 99.37 percentile</p>
+      </div>
+      <div class="card">
+        <span class="badge">Education</span>
+        <h3>B.Tech, Information Technology — Oriental Institute, Bhopal</h3>
+        <p>82% · 2008–2012</p>
+      </div>
+    </div>
+  </section>
 
-							<div class="job">
-								<h2>Oracle</h2>
-								<h3>Senior Application Engineer</h3>
-								<h4>Dec-2018 onwards</h4>
-								<p>Product: Oracle Human Capital Management: Benefits Team</p>
-							</div>
+  <section id="contact" style="border-bottom:none;">
+    <h2 class="section-title">Get in Touch</h2>
+    <div class="about-text" style="text-align:center;">
+      <p>Open to conversations on cloud-native security, platform architecture, and engineering leadership.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="mailto:anupam.3985@gmail.com">Email Me</a>
+        <a class="btn btn-secondary" href="https://linkedin.com/in/anupamtamrakar" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-secondary" href="https://github.com/anupamtamrakar" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
 
-							<div class="job">
-								<h2>CA Technologies</h2>
-								<h3>Senior Software Engineer</h3>
-								<h4>July-2014 to Nov-2018</h4>
-								<p>Product: <ul><li>CA Identity Manager & Governance</li><li>CA Siteminder (Single Sign On)</li>/<ul></p>
-							</div>
+</main>
 
-						</div><!--// .yui-u -->
-					</div><!--// .yui-gf -->
+<footer>
+  <div class="foot-name">Anupam Tamrakar</div>
+  <div>Technical Lead | AWS Certified | Cloud-Native Security</div>
+  <div style="margin-top:12px;">© 2026 Anupam Tamrakar. All rights reserved.</div>
+</footer>
 
-
-					<div class="yui-gf last">
-						<div class="yui-u first">
-							<h2>Education</h2>
-						</div>
-						<div class="yui-u">
-							<h2>NIT Allahabad</h2>
-							<h3>M.Tech. (Information Security)<strong>9.06 CGPA</strong> </h3>
-						</div>
-						<div class="yui-u">
-							<h2>RGPV Bhopal</h2>
-							<h3>Information Technology<strong>78 %</strong> </h3>
-						</div>
-					</div><!--// .yui-gf -->
-
-
-				</div><!--// .yui-b -->
-			</div><!--// yui-main -->
-		</div><!--// bd -->
-
-		<div id="ft">
-			<p>Anupam Tamrakar &mdash; <a href="mailto:anupam.tamrakar@oracle.com">anupam.tamrakar@oracle.com</a> &mdash; +91-7032857214</p>
-		</div><!--// footer -->
-
-	</div><!-- // inner -->
-
-
-</div><!--// doc -->
-
+<script>
+  const toggle = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  const stored = localStorage.getItem('theme');
+  if (stored) root.setAttribute('data-theme', stored);
+  else if (window.matchMedia('(prefers-color-scheme: dark)').matches) root.setAttribute('data-theme','dark');
+  updateIcon();
+  toggle.addEventListener('click', () => {
+    const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    updateIcon();
+  });
+  function updateIcon(){
+    toggle.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
+  }
+</script>
 
 </body>
 </html>
-
